@@ -1,6 +1,6 @@
 package mm.creational.prototype;
 
-public class Address implements Cloneable{
+public class Address implements Cloneable {
 
 	private final String streetName;
 	private final String houseNumber;

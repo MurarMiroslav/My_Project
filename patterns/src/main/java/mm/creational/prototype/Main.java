@@ -8,7 +8,6 @@ public class Main {
 		Person johnCopyNotClone = john;
 		System.out.println("johnCopyNotClone: " + johnCopyNotClone);
 
-
 		System.out.println();
 		Person jane = (Person) john.clone();
 		jane.setName("Jane");

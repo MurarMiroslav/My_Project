@@ -11,7 +11,8 @@ public class Main {
 
 		// use of decorators
 		System.out.println("\nStarting using decorators: \n");
-		FragStatistics decoratedStatistics = new FragDeathRatioDecorator(new FragInfoDecorator(new DisplayCountersDecorator(new DeathCountInfoDecorator(statistics))));
+		FragStatistics decoratedStatistics = new FragDeathRatioDecorator(new FragInfoDecorator(new DisplayCountersDecorator(
+				new DeathCountInfoDecorator(statistics))));
 
 		decoratedStatistics.incrementFragCount();
 		decoratedStatistics.incrementFragCount();
