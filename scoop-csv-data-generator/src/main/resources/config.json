@@ -1,0 +1,17 @@
+{
+  "seed": 0,
+  "columnConfigs": [
+    {
+      "type": "stringColumnConfig",
+      "promilleErrorRate": 100
+    },
+    {
+      "type": "intColumnConfig",
+      "promilleErrorRate": 0
+    }
+  ],
+  "fileSizesInMB": [
+    1,
+    5
+  ]
+}

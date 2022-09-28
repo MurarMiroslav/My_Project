@@ -14,6 +14,7 @@
         <module name="streams" />
         <module name="patterns" />
         <module name="rest-api-project" />
+        <module name="scoop-csv-data-generator" />
       </profile>
     </annotationProcessing>
   </component>
@@ -26,6 +27,7 @@
       <module name="recipy-app" options="-parameters" />
       <module name="rest" options="-parameters" />
       <module name="rest-api-project" options="-parameters" />
+      <module name="scoop-csv-data-generator" options="-parameters" />
       <module name="streams" options="-parameters" />
     </option>
   </component>
