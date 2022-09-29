@@ -12,6 +12,7 @@
         <module>streams</module>
         <module>patterns</module>
         <module>scoop-csv-data-generator</module>
+        <module>mapstruct</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

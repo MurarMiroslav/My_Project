@@ -11,6 +11,7 @@
         <module name="rest" />
         <module name="recipy-app" />
         <module name="mesagging" />
+        <module name="mapstruct" />
         <module name="streams" />
         <module name="patterns" />
         <module name="rest-api-project" />
@@ -22,6 +23,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="My_BegginerToGuru" options="-parameters" />
       <module name="Skuska" options="-parameters" />
+      <module name="mapstruct" options="-parameters" />
       <module name="mesagging" options="-parameters" />
       <module name="patterns" options="-parameters" />
       <module name="recipy-app" options="-parameters" />
