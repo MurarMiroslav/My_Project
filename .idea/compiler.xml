@@ -10,19 +10,24 @@
         <module name="Skuska" />
         <module name="rest" />
         <module name="recipy-app" />
-        <module name="mesagging" />
+        <module name="cache" />
         <module name="mapstruct" />
         <module name="streams" />
         <module name="patterns" />
+        <module name="sfg-jms" />
         <module name="rest-api-project" />
         <module name="scoop-csv-data-generator" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mesagging" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="My_BegginerToGuru" options="-parameters" />
       <module name="Skuska" options="-parameters" />
+      <module name="cache" options="-parameters" />
       <module name="mapstruct" options="-parameters" />
       <module name="mesagging" options="-parameters" />
       <module name="patterns" options="-parameters" />
@@ -30,6 +35,7 @@
       <module name="rest" options="-parameters" />
       <module name="rest-api-project" options="-parameters" />
       <module name="scoop-csv-data-generator" options="-parameters" />
+      <module name="sfg-jms" options="-parameters" />
       <module name="streams" options="-parameters" />
     </option>
   </component>

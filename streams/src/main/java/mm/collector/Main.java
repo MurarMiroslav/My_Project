@@ -41,10 +41,10 @@ public class Main {
 
 		System.out.println("\nmapping:");
 		var mappingWithTwoArg = persons.stream().collect(Collectors.mapping(person -> person.getName(), groupingBy(p -> p.equals("Miroslav"))));
-//		var mappingWithTwoArgs = persons.stream().collect(Collectors.mapping(person -> person.getSurname(), groupingBy(p -> p.equals("Miroslav"))));
-//		var mappingWithTwoArgss = persons.stream().collect(Collectors.mapping(person -> person.getName(), toList()));
-//		var mappingWithTwoArgsss = persons.stream().collect(Collectors.groupingBy(person -> person.equals("Miroslav"), Collectors.mapping(person -> person.getName(), toList())));
-//		var mappingWithTwoArgssss = persons.stream().collect(Collectors.mapping(person -> person.getName(), toList()));
+		var mappingWithTwoArgs = persons.stream().collect(Collectors.mapping(person -> person.getSurname(), groupingBy(p -> p.equals("Miroslav"))));
+		var mappingWithTwoArgss = persons.stream().collect(Collectors.mapping(person -> person.getName(), toList()));
+		var mappingWithTwoArgsss = persons.stream().collect(Collectors.groupingBy(person -> person.equals("Miroslav"), Collectors.mapping(person -> person.getName(), toList())));
+		var mappingWithTwoArgssss = persons.stream().collect(Collectors.mapping(person -> person.getName(), toList()));
 
 
 		System.out.println("\nflatMapping:");

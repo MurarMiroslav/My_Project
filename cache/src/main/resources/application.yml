@@ -1,0 +1,7 @@
+file-import:
+  session-service-config:
+    housekeeping-rate: PT60M # every 60 minutes
+  session-handler-config:
+    maxIdleTime: PT1800S
+    tmp-file-session-config:
+      max-cache-entries: 100

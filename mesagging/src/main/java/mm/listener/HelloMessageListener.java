@@ -27,7 +27,8 @@ public class HelloMessageListener {
     public void listen(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders headers, Message message){
 
-//        System.out.println("I Got a Message!!!!!");
+        System.out.println("\nSTART listen --> MY_QUEUE\n");
+        System.out.println("\nEND listen --> MY_QUEUE\n");
 //
 //        System.out.println(helloWorldMessage);
 
@@ -41,13 +42,14 @@ public class HelloMessageListener {
     public void listenForHello(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders headers, Message message) throws JMSException {
 
+        System.out.println("\nSTART listenForHello --> MY_SEND_RCV_QUEUE\n");
         HelloWorldMessage payloadMsg = HelloWorldMessage
                 .builder()
                 .id(UUID.randomUUID())
-                .message("World!!")
+                .message("Hello World!!! from listenForHello()")
                 .build();
 
         jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMsg);
-
+        System.out.println("\nEND listenForHello --> MY_SEND_RCV_QUEUE\n");
     }
 }

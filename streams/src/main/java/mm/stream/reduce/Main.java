@@ -14,22 +14,32 @@ public class Main {
 				new Person("Michal", "Kurbel", "32", List.of("Ing", "Ing"))));
 		persons.add(new Person("Andrej", "Certik", "35", List.of()));
 
-
 		System.out.println("reduce:");
 		long sumAge = persons.stream().map(person -> Long.parseLong(person.getAge()))
 				.reduce(45L, (age1, age2) -> age1 + age2);
 		System.out.println("sumAge: " + sumAge);
 
-		Optional<Long> optionalSumAge =   persons.stream().map(person -> Long.parseLong(person.getAge()))
+		Optional<Long> optionalSumAge = persons.stream().map(person -> Long.parseLong(person.getAge()))
 				.reduce((age1, age2) -> age1 + age2);
 		System.out.println("optionalSumAge: " + optionalSumAge.get());
 
-		long sumAgeWithThreeArguments =   persons.stream().map(person -> Long.parseLong(person.getAge()))
-				.reduce(0L, (age1, age2) -> age1 + age2, (a1, a2) -> 10L * a2);
+		long sumAgeWithThreeArguments = persons.stream().map(person -> Long.parseLong(person.getAge()))
+//				.reduce(1L, (age1, age2) -> age1 + age2, (age1 , age2) -> age1  * age2);
+				.reduce(1L, (age1, age2) ->
+						{
+							System.out.println("age1: " + age1 + " + age2: " + age2 + " ==> " + (age1 + age2));
+							return age1 + age2;
+						},
+						(age1, age2) ->
+						{
+							System.out.println("age1: " + age1 +  " * age2: " + age2 + " ==> " + (age1 * age2));
+							return age1 * age2;
+						}
+						);
+
 		System.out.println("sumAgeWithThreeArguments: " + sumAgeWithThreeArguments);
 
-
-		System.out.println();
+		System.out.println("\nROOT: ");
 		List<Double> numList = Arrays.asList(9.0, 4.0);
 //		double productOfSqrRoots = numList.stream().reduce(1.0, (a, b) -> {
 //			System.out.println("a: " + a + ", Math.sqrt(b): " + Math.sqrt(b));
@@ -40,11 +50,17 @@ public class Main {
 			return a * Math.sqrt(b);
 		});
 //		double productOfSqrRoots = numList.parallelStream().reduce(0.0, (a, b) -> a + b);
-		System.out.println("" + productOfSqrRoots);
+		System.out.println("\nproductOfSqrRoots: " + productOfSqrRoots);
 
 		numList = Arrays.asList(9.0, 4.0);
-		productOfSqrRoots = numList.stream().reduce(1.0, (a, b) -> a * Math.sqrt(b), (a, b) -> a * b);
+		productOfSqrRoots = numList.stream().reduce(1.0, (a, b) -> {
+			System.out.println("a: " + a + ", Math.sqrt(b): " + Math.sqrt(b) + " ==> " + a * Math.sqrt(b));
+			return a * Math.sqrt(b);
+		}, (a, b) -> {
+			System.out.println("a: " + a + " * b: " + b + " ==> " + (a * b));
+			return a * b;
+		});
 //		productOfSqrRoots = numList.parallelStream().reduce(0.0, (a, b) -> a + b, (a, b) -> a + b)
-		System.out.println("" + productOfSqrRoots);
+		System.out.println("productOfSqrRoots AGAIN: " + productOfSqrRoots);
 	}
 }

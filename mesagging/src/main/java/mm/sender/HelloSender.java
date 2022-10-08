@@ -25,39 +25,42 @@ public class HelloSender {
     private final JmsTemplate jmsTemplate;
     private final ObjectMapper objectMapper;
 
-    @Scheduled(fixedRate = 2000)
-    public void sendMessage(){
+//    @Scheduled(fixedRate = 200)
+//    public void sendMessage(){
+//        System.out.println("\nSTART sendMessage\n");
+//        HelloWorldMessage message = HelloWorldMessage
+//                .builder()
+//                .id(UUID.randomUUID())
+//                .message("Hello World! from sendMessage()")
+//                .build();
+//
+//        jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
+//        System.out.println("\nEND sendMessage\n");
+//    }
 
+    @Scheduled(fixedRate = 200)
+    public void sendAndReceiveMessage() throws JMSException {
+
+        System.out.println("\nSTART sendAndReceiveMessage\n");
         HelloWorldMessage message = HelloWorldMessage
                 .builder()
                 .id(UUID.randomUUID())
-                .message("Hello World!")
-                .build();
-
-        jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
-
-    }
-
-    @Scheduled(fixedRate = 2000)
-    public void sendandReceiveMessage() throws JMSException {
-
-        HelloWorldMessage message = HelloWorldMessage
-                .builder()
-                .id(UUID.randomUUID())
-                .message("Hello")
+                .message("Hello World!! from sendAndReceiveMessage()")
                 .build();
 
         Message receviedMsg = jmsTemplate.sendAndReceive(JmsConfig.MY_SEND_RCV_QUEUE, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
+                System.out.println("\nSTART createMessage\n");
                 Message helloMessage = null;
 
                 try {
                     helloMessage = session.createTextMessage(objectMapper.writeValueAsString(message));
-                    helloMessage.setStringProperty("_type", "guru.springframework.sfgjms.model.HelloWorldMessage");
+                    helloMessage.setStringProperty("_type", "mm.model.HelloWorldMessage");
 
-                    System.out.println("Sending Hello");
+//                    System.out.println("Sending Hello");
 
+                    System.out.println("\nEND createMessage\n");
                     return helloMessage;
 
                 } catch (JsonProcessingException e) {
@@ -67,6 +70,7 @@ public class HelloSender {
         });
 
         System.out.println(receviedMsg.getBody(String.class));
+        System.out.println("\nEND sendAndReceiveMessage\n");
     }
 
 }
